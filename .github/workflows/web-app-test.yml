@@ -11,13 +11,6 @@ jobs: # jobs to be executed
           echo "TESTING"
           echo "TEST 1 COMPLETE"
 
-  step-2:
-    needs: [workflow-init]
-    runs-on: ubuntu-latest
-    steps:
-      - name: echo "TESTING"
-        run: echo "TEST 2 COMPLETE"
-    
   # checkout depends on workflow-init
   app-checkout:
     needs: [workflow-init]
@@ -25,3 +18,13 @@ jobs: # jobs to be executed
     steps:
       - name: Checkout
         uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+  step-2:
+    needs: [workflow-init]
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo "TESTING"
+        run: echo "TEST 2 COMPLETE"
