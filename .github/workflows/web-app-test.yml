@@ -3,7 +3,7 @@ name: Java automating builds and tests
 on: [push] # event or trigger that activates workflow
 
 jobs: # jobs to be executed
-  test_1:
+  workflow-init:
     runs-on: ubuntu-latest
     steps: # steps the job must take
     - name: print greeting
@@ -12,9 +12,16 @@ jobs: # jobs to be executed
           echo "TEST 1 COMPLETE"
 
   step-2:
-    needs: [test_1]
+    needs: [workflow-init]
     runs-on: ubuntu-latest
     steps:
       - name: echo "TESTING"
         run: echo "TEST 2 COMPLETE"
     
+  # checkout depends on workflow-init
+  app-checkout:
+    needs: [workflow-init]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
