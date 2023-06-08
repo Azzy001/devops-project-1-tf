@@ -3,9 +3,18 @@ name: Java automating builds and tests
 on: [push] # event or trigger that activates workflow
 
 jobs: # jobs to be executed
-  build:
+  test_1:
     runs-on: ubuntu-latest
-
     steps: # steps the job must take
     - name: print greeting
-      run: echo "TESTING TESTING TESTING"
+      run: | # pipe symbol = more than 1 command to run
+          echo "TESTING"
+          echo "TEST 1 COMPLETE"
+
+  step-2:
+    needs: [test_1]
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo "TESTING"
+        run: echo "TEST 2 COMPLETE"
+    
