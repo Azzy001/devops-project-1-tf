@@ -13,7 +13,6 @@ jobs: # jobs to be executed
 
   # checkout depends on workflow-init
   app-checkout:
-    needs: [workflow-init]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,8 +20,13 @@ jobs: # jobs to be executed
         with:
           fetch-depth: 0
 
-  step-2:
+  # java checkstyle and reviewdog
+  app-check-style:
     runs-on: ubuntu-latest
     steps:
-      - name: echo "TESTING"
-        run: echo "TEST 2 COMPLETE"
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Run java checkstyle
+        uses: nikitasavinov/checkstyle-action@0.6.0
+        
+    
