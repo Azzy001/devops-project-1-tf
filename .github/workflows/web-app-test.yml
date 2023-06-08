@@ -1,6 +1,6 @@
 name: Java automating builds and tests
 
-on: [push] # event or trigger that activates workflow
+on: [push, pull_request] # event or trigger that activates workflow
 
 jobs: # jobs to be executed
   workflow-init:
