@@ -18,7 +18,6 @@ jobs: # jobs to be executed
       - name: github actions artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: github-actions-artifact
-          path: .devops-project-1-tf/
-          if-no-files-found: error
+          name: artifact-test
+          path: hello_world.java
         
