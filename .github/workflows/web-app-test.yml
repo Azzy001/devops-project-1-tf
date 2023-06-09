@@ -39,7 +39,7 @@ jobs: # jobs to be executed
         uses: actions/upload-artifact@v3.1.2
         with:
           name: github-actions-artifact
-          path: ./artifacts/
+          path: .artifacts/
           if-no-files-found: error
         
         
