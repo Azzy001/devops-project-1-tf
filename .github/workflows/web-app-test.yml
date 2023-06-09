@@ -31,6 +31,14 @@ jobs: # jobs to be executed
       - name: show hello.java
         run: cat hello_world.java
       
-        
+  produce-artifact:
+    needs: [app-checkout, app-check-style]
+    runs-on: ubuntu-latest
+    steps:
+      - name: github actions artifact
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: github-actions-artifact
+          path: staging
         
         
