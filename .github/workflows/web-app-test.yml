@@ -10,6 +10,7 @@ jobs: # jobs to be executed
       run: | # pipe symbol = more than 1 command to run
         touch new_file
         echo "New file" > new_file
+        pwd
     - name: github actions artifact
       uses: actions/upload-artifact@v3.1.2
       with:
