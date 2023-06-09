@@ -1,24 +1,18 @@
 name: Java automating builds and tests
 
-on: [push, pull_request] # event or trigger that activates workflow
+on: push # event or trigger that activates workflow
 
 jobs: # jobs to be executed
-  workflow-init:
+  uploading-artifact:
     runs-on: ubuntu-latest
     steps: # steps the job must take
     - name: make a new file
       run: | # pipe symbol = more than 1 command to run
-          pwd    
-          touch new_file
-          ls -lart
-          echo "New file" > new_file
-
-  produce-artifact:
-    runs-on: ubuntu-latest
-    steps:
-      - name: github actions artifact
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: upload_files
-          path: /home/runner/work/devops-project-1-tf/devops-project-1-tf
+        touch new_file
+        echo "New file" > new_file
+    - name: github actions artifact
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        name: upload_files
+        path: /home/runner/work/devops-project-1-tf/devops-project-1-tf
         
