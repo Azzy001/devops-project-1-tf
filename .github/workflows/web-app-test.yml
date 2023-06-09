@@ -11,35 +11,14 @@ jobs: # jobs to be executed
           echo "TESTING"
           echo "TEST 1 COMPLETE"
 
-  # checkout depends on workflow-init
-  app-checkout:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3.5.2
-        with:
-          fetch-depth: 0
 
-  # java checkstyle and reviewdog
-  app-check-style:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      - name: Run java checkstyle
-        uses: nikitasavinov/checkstyle-action@0.6.0
-      - name: show hello.java
-        run: cat hello_world.java
-      
   produce-artifact:
-    needs: [app-checkout, app-check-style]
     runs-on: ubuntu-latest
     steps:
       - name: github actions artifact
         uses: actions/upload-artifact@v3.1.2
         with:
           name: github-actions-artifact
-          path: .artifacts/
+          path: .devops-project-1-tf/
           if-no-files-found: error
-        
         
