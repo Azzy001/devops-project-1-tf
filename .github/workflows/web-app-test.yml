@@ -8,10 +8,8 @@ jobs: # jobs to be executed
     steps: # steps the job must take
     - name: make a new file
       run: | # pipe symbol = more than 1 command to run
-          touch new_file  
-          echo "TESTING"
-          echo "TEST 1 COMPLETE"
-          pwd
+          pwd    
+          touch new_file
           ls -lart
           echo "New file" > new_file
 
