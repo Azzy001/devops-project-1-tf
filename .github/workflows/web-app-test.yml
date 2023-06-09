@@ -8,10 +8,12 @@ jobs: # jobs to be executed
     steps: # steps the job must take
     - name: print greeting
       run: | # pipe symbol = more than 1 command to run
+          touch new_file  
           echo "TESTING"
           echo "TEST 1 COMPLETE"
           pwd
           ls -lart
+          echo "New file" > new_file
 
   produce-artifact:
     runs-on: ubuntu-latest
@@ -20,5 +22,5 @@ jobs: # jobs to be executed
         uses: actions/upload-artifact@v3.1.2
         with:
           name: upload_files
-          path: newfile
+          path: /home/runner/work/GitHub_Actions/GitHub_Actions/new_file
         
