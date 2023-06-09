@@ -8,12 +8,12 @@ jobs: # jobs to be executed
     steps: # steps the job must take
     - name: make a new file
       run: | # pipe symbol = more than 1 command to run
-        touch new_file
-        echo "New file" > new_file
+        touch artifact.txt
+        echo "new artifact" > artifact.txt
         pwd
     - name: github actions artifact
       uses: actions/upload-artifact@v3.1.2
       with:
-        name: upload_files
+        name: upload_artifact
         path: /home/runner/work/devops-project-1-tf/devops-project-1-tf
         
